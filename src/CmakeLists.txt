@@ -1,0 +1,31 @@
+# 指定 CMake 最低版本号
+set(APP_NAME "enKey-qt5")
+cmake_minimum_required(VERSION 3.0)
+
+# 工程名
+project(APP_NAME) 
+
+# 设置 C++ 标准
+set(CMAKE_CXX_STANDARD 11)
+
+
+set(SOURCE
+	res/main.qrc
+	res/qss.qrc
+    main.cpp
+    MainWindow.cpp
+    MainWindow.ui
+    )
+
+include_directories(".")
+# 添加可执行文件 
+add_executable(${APP_NAME} WIN32 ${SOURCE})
+
+target_link_libraries(${APP_NAME}
+    PUBLIC Qt5::Core
+    PUBLIC Qt5::Gui
+    PUBLIC Qt5::Widgets
+    PUBLIC Qt5::Network)
+
+install(TARGETS ${APP_NAME}
+    RUNTIME DESTINATION bin)
