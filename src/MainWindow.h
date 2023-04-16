@@ -1,7 +1,9 @@
 #pragma once
 
 #include <QMainWindow>
+#include <iostream>
 #include "ui_MainWindow.h"
+#include "videoWindow.h"
 
 class MainWindow : public QMainWindow
 {
@@ -13,8 +15,10 @@ public:
 
 private:
 	Ui::MainWindow ui;
-
+	std::unique_ptr<videoWindow> vedio_form_;
 private slots:
 	void initForm();
 	void initStyle();
+	void initSignal();
+	void makeWord_slot();
 };

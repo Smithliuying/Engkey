@@ -2,7 +2,8 @@
 #include <QFile>
 
 MainWindow::MainWindow(QWidget *parent)
-	: QMainWindow(parent)
+	: QMainWindow(parent),
+    vedio_form_(std::make_unique<videoWindow>())
 {
 	ui.setupUi(this);
     this->initForm();
@@ -14,6 +15,7 @@ MainWindow::~MainWindow()
 void MainWindow::initForm()
 {
     this->initStyle();
+    this->initSignal();
 }
 
 void MainWindow::initStyle()
@@ -29,4 +31,14 @@ void MainWindow::initStyle()
         qApp->setStyleSheet(qss);
         file.close();
     }
+}
+
+void MainWindow::initSignal()
+{
+    connect(ui.make_action, SIGNAL(triggered()), this, SLOT(makeWord_slot()));
+}
+
+void MainWindow::makeWord_slot()
+{
+    vedio_form_->show();
 }

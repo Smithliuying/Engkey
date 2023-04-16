@@ -27,7 +27,7 @@
     <property name="title">
      <string>词库</string>
     </property>
-    <addaction name="action"/>
+    <addaction name="make_action"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
@@ -50,7 +50,7 @@
    <addaction name="menu_4"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="action">
+  <action name="make_action">
    <property name="text">
     <string>从视频中生成词库</string>
    </property>
