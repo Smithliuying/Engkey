@@ -19,6 +19,7 @@ private:
 private slots:
 	void initForm();
 	void initStyle();
+	void initUniqueStyle();
 	void initSignal();
 	void makeWord_slot();
 };

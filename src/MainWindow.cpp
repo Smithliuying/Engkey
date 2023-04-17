@@ -15,6 +15,7 @@ MainWindow::~MainWindow()
 void MainWindow::initForm()
 {
     this->initStyle();
+    this->initUniqueStyle();
     this->initSignal();
 }
 
@@ -31,6 +32,16 @@ void MainWindow::initStyle()
         qApp->setStyleSheet(qss);
         file.close();
     }
+}
+
+void MainWindow::initUniqueStyle()
+{
+    //ui.textEdit->setFrameShape(QFrame::NoFrame);
+    //ui.textEdit->setLineWidth(0);
+    //// ÉèÖÃÍ¸Ã÷±³¾°
+    //QPalette p = ui.textEdit->palette();
+    //p.setColor(QPalette::Base, Qt::transparent);
+    //ui.textEdit->setPalette(p);
 }
 
 void MainWindow::initSignal()
