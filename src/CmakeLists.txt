@@ -6,20 +6,23 @@ cmake_minimum_required(VERSION 3.0)
 project(APP_NAME) 
 
 # 设置 C++ 标准
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
+file( GLOB exe_HEADERS  *.h *.hpp)
+file( GLOB exe_SOURCES *.cpp *.cxx)
+file( GLOB exe_RC      *.qrc )
+file( GLOB exe_UI      *.ui res/*.qrc )
+
+SOURCE_GROUP("Form Files" FILES ${exe_UI})
+SOURCE_GROUP("Resource Files" FILES ${exe_RC})
 
 set(SOURCE
-	res/main.qrc
-	res/qss.qrc
-    main.cpp
-    MainWindow.cpp
-	videoWindow.cpp
-    MainWindow.ui
-	videoWindow.ui
+	${exe_HEADERS}
+	${exe_SOURCES}
+	${exe_RC}
+	${exe_UI}
     )
 
-include_directories(".")
 # 添加可执行文件 
 add_executable(${APP_NAME} WIN32 ${SOURCE})
 
