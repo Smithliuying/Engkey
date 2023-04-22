@@ -22,4 +22,6 @@ private slots:
 	void initUniqueStyle();
 	void initSignal();
 	void makeWord_slot();
+	void next_slot();
+	void previous_slot();
 };

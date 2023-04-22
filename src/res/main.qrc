@@ -8,5 +8,7 @@
         <file>image/msg_question.png</file>
         <file>image/qt_zh_CN.qm</file>
         <file>image/widgets.qm</file>
+        <file>image/24gl-nextFrame.png</file>
+        <file>image/24gl-previousFrame.png</file>
     </qresource>
 </RCC>

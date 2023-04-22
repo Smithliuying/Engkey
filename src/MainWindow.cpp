@@ -1,4 +1,5 @@
 #include "MainWindow.h"
+#include "dbEngine.h"
 #include <QFile>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -52,4 +53,15 @@ void MainWindow::initSignal()
 void MainWindow::makeWord_slot()
 {
     vedio_form_->show();
+    auto wordBook = std::move(dbEngine::getInst()->loadJson("C:\\Users\\lyj\\Documents\\´©Ñ¥×ÓµÄÃ¨.json"));
+    printf("11111111");
+}
+
+void MainWindow::next_slot()
+{
+
+}
+
+void MainWindow::previous_slot()
+{
 }
