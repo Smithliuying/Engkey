@@ -1,5 +1,5 @@
-#include "MainWindow.h"
 #include "dbEngine.h"
+#include "MainWindow.h"
 #include <QFile>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -18,6 +18,7 @@ void MainWindow::initForm()
     this->initStyle();
     this->initUniqueStyle();
     this->initSignal();
+    this->initDb();
 }
 
 void MainWindow::initStyle()
@@ -50,18 +51,52 @@ void MainWindow::initSignal()
     connect(ui.make_action, SIGNAL(triggered()), this, SLOT(makeWord_slot()));
 }
 
+void MainWindow::initDb()
+{
+   wordBook_ = std::move(dbEngine::getInst()->loadJson("C:\\Users\\lyj\\Documents\\穿靴子的猫.json"));
+   it_ = wordBook_.begin();
+   wordCount_ = wordBook_.size();
+   wordIndex_ = 1;
+   this->upDate();
+}
+
+void MainWindow::upDate()
+{
+    QString index= QString("%1/%2").arg(wordIndex_).arg(wordCount_);
+    ui.label_count->setText(index);
+    ui.txtEdit_value->setText(it_->value);
+    ui.txtEdit_value->setAlignment(Qt::AlignHCenter);
+    ui.label_define->setText(it_->definition);
+    ui.label_translation->setText(it_->translation);
+}
+
 void MainWindow::makeWord_slot()
 {
     vedio_form_->show();
-    auto wordBook = std::move(dbEngine::getInst()->loadJson("C:\\Users\\lyj\\Documents\\穿靴子的猫.json"));
-    printf("11111111");
 }
 
 void MainWindow::next_slot()
 {
-
+    wordIndex_++;
+    if (++it_ == wordBook_.end())
+    {
+        it_ = wordBook_.begin();
+        wordIndex_ = 1;
+    }
+    this->upDate();
 }
 
 void MainWindow::previous_slot()
 {
+    if (it_ == wordBook_.begin())
+    {
+        it_ = wordBook_.end() - 1;
+        wordIndex_ = wordCount_;
+    }
+    else
+    {
+        --it_;
+        --wordIndex_;
+    }
+    this->upDate();
 }

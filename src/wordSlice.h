@@ -11,4 +11,5 @@ struct wordSlice
 	QString translation;
 	QString exchange;
 	QString captions;
+	
 };

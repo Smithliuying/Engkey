@@ -1,7 +1,5 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include "wordSlice.h"
 #include "dbEngine.h"
 #include <QFile>
 #include <QJsonDocument>
